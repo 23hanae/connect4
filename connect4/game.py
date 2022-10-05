@@ -56,18 +56,20 @@ class Grid:
 
         # TODO: Vertical 
         adjacent = 0 
-        for i in range(Grid.lines):
-           cell = self.grid[i][column]
+        for i in range(Grid.lines): # parcourir les lignes
+           cell = self.grid[i][column] # itération de la cellule 
            if cell == color:
                 adjacent += 1
                 if adjacent == 4:
                    return True
            else:
                 adjacent = 0
+                
         # TODO: Diagonal
         adjacent = 0
         for l in range(Grid.lines): # parcourir les lignes
-           if(line - l) <= 0 and (column + l) <= Grid.columns : #  ne pas dépasser le max des lignes et colonnes
+           if(line - l) <= 0 and (column + l) <= Grid.columns : # ne pas dépasser le max des lignes et colonnes
+        # decrémentation des lignes et incrémentation des colonnes
                 if cell == color:
                    adjacent += 1
                    if adjacent == 4:
@@ -79,12 +81,12 @@ class Grid:
     def tie(self) -> bool:
         """Check if the grid is full."""
         # TODO
-        a = 0 
+        a = 0 # initialisation de nombres de cellules pleine
         for line in range(Grid.lines): # parcours les lignes
           for column in range(Grid.columns): # parcours les colonnes
             if self.grid[line][column] != Cell.EMPTY : # vérifier si la cellule est rempli
-                a += 1
-                if a == 42:
+                a += 1 # incrémentation 
+                if a == 42: # 42 : nombre total des cellules
                     return True # retourne que la grille est pleine
         return False
 class Player:
