@@ -66,26 +66,14 @@ class Grid:
                 adjacent = 0
         # TODO: Diagonal
         adjacent = 0
-        # Vérification pour la 1ere diagonale
-        for i in range(Grid.lines):
-           if line+i-min(line,column) < Grid.lines and column+i-min(line,column) < Grid.columns:
-               cell = self.grid[line+i-min(line,column)][column+i-min(line,column)]
-               if cell == color:
-                   adjacent += 1
-                   if adjacent == 4:
-                       return True
-               else:
-                   adjacent = 0
-        # Vérification pour la 2ème diagonale        
-           if line-i-min(line,column) < Grid.lines and column+i-min(line,column) < Grid.columns:
-                cell = self.grid[line-i-min(line,column)][column+i-min(line,column)]
+        for l in range(Grid.lines): # parcourir les lignes
+           if(line - l) <= 0 and (column + l) <= Grid.columns : #  ne pas dépasser le max des lignes et colonnes
                 if cell == color:
                    adjacent += 1
                    if adjacent == 4:
                        return True
                 else:
                    adjacent = 0
-        
         return False
     
     def tie(self) -> bool:
