@@ -44,10 +44,33 @@ class Grid:
             else:
                 adjacent = 0
 
-        # TODO: Vertical
+        # TODO: Vertical 
+        adjacent = 0 
+        for i in range(Grid.lines):
+           cell = self.grid[i][column]
+           if cell == color:
+                adjacent += 1
+                if adjacent == 4:
+                   return True
+           else:
+                adjacent = 0
         # TODO: Diagonal
+        adjacent = 0
+        for i in range(Grid.lines):
+           if line+i-min(line,column) < Grid.lines and column+i-min(line,column) < Grid.columns:
+               cell = self.grid[line+i-min(line,column)][column+i-min(line,column)]
+                
+           if line-i-min(line,column) < Grid.lines and column+i-min(line,column) < Grid.columns:
+                cell = self.grid[line-i-min(line,column)][column+i-min(line,column)]
+                if cell == color:
+                   adjacent += 1
+                   if adjacent == 4:
+                       return True
+                else:
+                   adjacent = 0
+        
         return False
-
+    
     def tie(self) -> bool:
         # TODO
         return False
