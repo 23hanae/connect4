@@ -84,9 +84,14 @@ class Grid:
     def tie(self) -> bool:
         """Check if the grid is full."""
         # TODO
+        a = 0
+        for line in range(Grid.lines): 
+          for column in range(Grid.columns): 
+            if self.grid[line][column] != Cell.EMPTY : # vérifier si la cellule est rempli
+                a += 1
+                if a == 42:
+                    return True # retourne le numéro de la colonne
         return False
-
-
 class Player:
     """Abstract base class for Players in this game."""
 
