@@ -66,10 +66,17 @@ class Grid:
                 adjacent = 0
         # TODO: Diagonal
         adjacent = 0
+        # Vérification pour la 1ere diagonale
         for i in range(Grid.lines):
            if line+i-min(line,column) < Grid.lines and column+i-min(line,column) < Grid.columns:
                cell = self.grid[line+i-min(line,column)][column+i-min(line,column)]
-                
+               if cell == color:
+                   adjacent += 1
+                   if adjacent == 4:
+                       return True
+               else:
+                   adjacent = 0
+        # Vérification pour la 2ème diagonale        
            if line-i-min(line,column) < Grid.lines and column+i-min(line,column) < Grid.columns:
                 cell = self.grid[line-i-min(line,column)][column+i-min(line,column)]
                 if cell == color:
@@ -84,13 +91,13 @@ class Grid:
     def tie(self) -> bool:
         """Check if the grid is full."""
         # TODO
-        a = 0
-        for line in range(Grid.lines): 
-          for column in range(Grid.columns): 
+        a = 0 
+        for line in range(Grid.lines): # parcours les lignes
+          for column in range(Grid.columns): # parcours les colonnes
             if self.grid[line][column] != Cell.EMPTY : # vérifier si la cellule est rempli
                 a += 1
                 if a == 42:
-                    return True # retourne le numéro de la colonne
+                    return True # retourne que la grille est pleine
         return False
 class Player:
     """Abstract base class for Players in this game."""
