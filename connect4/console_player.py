@@ -6,4 +6,7 @@ class ConsolePlayer(Player):
     keyboard."""
 
     def play(self, grid: Grid) -> int:
-        ...
+        saisie_col = int(input("Num colonne:")) #saisir une colonne sur le clavier
+        return saisie_col # retourner la grille
+     
+        
